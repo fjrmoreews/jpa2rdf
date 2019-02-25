@@ -1,0 +1,41 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://uml2rdf.entity.example/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://thewebsemantic.com/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://jsmith.myopenid.com">
+    <j.0:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John Smith</j.0:name>
+    <j.0:address rdf:resource="http://uml2rdf.entity.example/Address/77e2da04-2bec-11b2-8050-8f40840b31c1"/>
+    <rdf:type rdf:resource="http://uml2rdf.entity.example/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/Person">
+    <j.1:javaclass>uml2rdf.entity.example.Person</j.1:javaclass>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/city">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/Address">
+    <j.1:javaclass>uml2rdf.entity.example.Address</j.1:javaclass>
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/Address/77e2da04-2bec-11b2-8050-8f40840b31c1">
+    <j.0:street rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Main St.</j.0:street>
+    <j.0:city rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sydney</j.0:city>
+    <rdf:type rdf:resource="http://uml2rdf.entity.example/Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/street">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/name">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://uml2rdf.entity.example/address">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://thewebsemantic.com/javaclass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+</rdf:RDF>

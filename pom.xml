@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.dyliss.rdf</groupId>
+	<artifactId>uml2rdf</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+
+      
+        
+	<name>org.d4wp</name>
+	
+ 
+    
+   <packaging>jar</packaging>
+ 
+ 
+ 	<properties>
+ 	
+	       	<java-version>1.8</java-version>
+		
+		        <logback.version>1.2.3</logback.version>
+		        
+                <logback.contrib.version>0.1.5</logback.contrib.version> 
+               
+				<!--<jackson.version>2.9.3</jackson.version>-->
+				
+   </properties>
+   
+   
+	<dependencies>
+ 
+<!-- https://mvnrepository.com/artifact/com.thewebsemantic/jenabean -->
+<dependency>
+    <groupId>com.thewebsemantic</groupId>
+    <artifactId>jenabean</artifactId>
+    <version>1.0.6</version>
+</dependency>
+
+ 
+
+
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.3.2</version>
+</dependency>
+
+
+
+
+  </dependencies>
+ 
+ 
+ 
+	<build>
+	
+		<finalName>org.d4wp</finalName>
+	
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*LiveTest.java</exclude>
+					</excludes>
+					<systemPropertyVariables>
+						
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+ 
+
+<!-- <systemPropertyVariables><provPersistenceTarget>h2</provPersistenceTarget></systemPropertyVariables> -->
+
+
+ 
+	
+	
+	
+
+	<profiles>
+		<profile>
+			<id>integration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<excludes>
+										<exclude>**/*LiveTest.java</exclude>
+									</excludes>
+									<includes>
+										<include>**/*IntegrationTest.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
+
+</project>
