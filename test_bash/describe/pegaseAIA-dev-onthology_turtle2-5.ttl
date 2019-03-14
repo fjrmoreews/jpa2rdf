@@ -1,0 +1,88 @@
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://inra/pegase#sampleDilution>
+      a       rdf:Property .
+
+<http://inra/pegase#AIAanalysis>
+      a       rdfs:Class ;
+      <http://thewebsemantic.com/javaclass>
+              "gendev.AIAanalysis" .
+
+<http://inra/pegase#sampleID>
+      a       rdf:Property .
+
+<http://inra/pegase#sampleVol>
+      a       rdf:Property .
+
+<http://inra/pegase#AIAanalysis/myBiologist42-Thu+Mar+07+14%3A25%3A39+CET+2019-mySampleID404>
+      a       <http://inra/pegase#AIAanalysis> ;
+      <http://inra/pegase#calibPrecGammeBlanc>
+              "blancNoir"^^xsd:string ;
+      <http://inra/pegase#dateExp>
+              "2019-03-07T13:25:39.182Z"^^xsd:dateTime ;
+      <http://inra/pegase#device>
+              "Windows"^^xsd:string ;
+      <http://inra/pegase#mol>
+              "mol2"^^xsd:string ;
+      <http://inra/pegase#operator>
+              "myBiologist42"^^xsd:string ;
+      <http://inra/pegase#primaryKey>
+              "myBiologist42-Thu Mar 07 14:25:39 CET 2019-mySampleID404"^^xsd:string ;
+      <http://inra/pegase#prodCrit>
+              "yellowCrit"^^xsd:string ;
+      <http://inra/pegase#sampleDilution>
+              "0.22"^^xsd:float ;
+      <http://inra/pegase#sampleID>
+              "mySampleID404"^^xsd:string ;
+      <http://inra/pegase#sampleVol>
+              "5.02"^^xsd:float .
+
+<http://thewebsemantic.com/javaclass>
+      a       owl:AnnotationProperty .
+
+<http://inra/pegase#AIAanalysis/myBiologist45-Thu+Mar+07+14%3A25%3A37+CET+2019-mySampleID1010>
+      a       <http://inra/pegase#AIAanalysis> ;
+      <http://inra/pegase#calibPrecGammeBlanc>
+              "blancBlanc"^^xsd:string ;
+      <http://inra/pegase#dateExp>
+              "2019-03-07T13:25:37.629Z"^^xsd:dateTime ;
+      <http://inra/pegase#device>
+              "Linux"^^xsd:string ;
+      <http://inra/pegase#mol>
+              "mol1"^^xsd:string ;
+      <http://inra/pegase#operator>
+              "myBiologist45"^^xsd:string ;
+      <http://inra/pegase#primaryKey>
+              "myBiologist45-Thu Mar 07 14:25:37 CET 2019-mySampleID1010"^^xsd:string ;
+      <http://inra/pegase#prodCrit>
+              "redCrit"^^xsd:string ;
+      <http://inra/pegase#sampleDilution>
+              "0.23"^^xsd:float ;
+      <http://inra/pegase#sampleID>
+              "mySampleID1010"^^xsd:string ;
+      <http://inra/pegase#sampleVol>
+              "0.7"^^xsd:float .
+
+<http://inra/pegase#operator>
+      a       rdf:Property .
+
+<http://inra/pegase#primaryKey>
+      a       rdf:Property .
+
+<http://inra/pegase#calibPrecGammeBlanc>
+      a       rdf:Property .
+
+<http://inra/pegase#mol>
+      a       rdf:Property .
+
+<http://inra/pegase#device>
+      a       rdf:Property .
+
+<http://inra/pegase#dateExp>
+      a       rdf:Property .
+
+<http://inra/pegase#prodCrit>
+      a       rdf:Property .

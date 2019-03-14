@@ -8,7 +8,7 @@ public class WorkingGenre {
 	public static WorkingGenre CLASSICAL = new WorkingGenre("CLASSICAL");
 	public static WorkingGenre JAZZ = new WorkingGenre("JAZZ");
 	
-	private String id;
+	private String id = "s";
 	
 	public WorkingGenre(String id) {
 		this.id = id;

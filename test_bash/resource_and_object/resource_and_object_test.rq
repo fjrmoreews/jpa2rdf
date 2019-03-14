@@ -1,0 +1,19 @@
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX owl:     <http://www.w3.org/2002/07/owl#> 
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+
+# the ouput show the ressoucre and associated object of your ttl file
+SELECT *
+WHERE{
+    ?resource rdf:type ?objet  .
+}
+
+####### contain all type of relation ########
+# xsd:string
+# owl:AnnotationProperty
+# rdfs:Class
+# rdf:Property
+# rdf:type
+# rdf:resource
+# a 

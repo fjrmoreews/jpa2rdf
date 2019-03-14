@@ -11,9 +11,9 @@ import thewebsemantic.vocabulary.Foaf;
 public class WorkingSong extends RdfBean<WorkingSong> {
 	//@RdfProperty(Foaf.+ "name")
 	@RdfProperty(FOAF.NS + "name")
-	private String composer;
+	private String composer = "aa";
 	private WorkingGenre genre; 
-	private String title;
+	private String title = "t1";
 	
 	/*public static Collection<WorkingSong> load() {
 		return Jenabean.load(WorkingSong.class);
