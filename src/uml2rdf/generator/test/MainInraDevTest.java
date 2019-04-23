@@ -14,6 +14,7 @@ import thewebsemantic.Bean2RDF;
 import thewebsemantic.RDF2Bean;
 import thewebsemantic.binding.RdfBean;
 import uml2rdf.test.inra_dev_test.AIAanalysis;
+import uml2rdf.test.inra_dev_test.Sampletest;
 import uml2rdf.utils.PrimaryKeyUtils;
 
 public class MainInraDevTest {
@@ -55,6 +56,31 @@ public class MainInraDevTest {
 		owriter.save(myInstance);
 		owriter.save(myInstance2); // add the second instance of the JPA on the first
 		writeToFile(om, "test/pegaseAIA-dev-onthology_turtle2-5.ttl", "TURTLE", "N3-TRIPLE");
+		
+		//instance of sample
+		System.out.println("sample start");
+		Sampletest instance1 = new Sampletest();
+		
+		instance1.setNameAnimal("Albane");
+		instance1.setNumAnimal(13007346);
+		instance1.setOrganism("Beeeh");
+		instance1.setSampleID("mySampleID1010");
+		
+		final OntModel om2 = ModelFactory.createOntologyModel();
+		final Bean2RDF owriter2 = new Bean2RDF(om2);
+		
+		Sampletest instance2 = new Sampletest();
+		
+		instance2.setNameAnimal("Sohie");
+		instance2.setNumAnimal(15003492);
+		instance2.setOrganism("Meuh");
+		instance2.setSampleID("mySampleID404");
+		
+		owriter2.save(instance1);
+		owriter2.save(instance2);
+		
+		writeToFile(om2, "test/Sampletest-onthology_turtle", "TURTLE", "N3-TRIPLE");
+		
 	}
 	
 	private static void writeToFile( Model m, String filename, String rdfFormat, String rdfstyle) throws FileNotFoundException {

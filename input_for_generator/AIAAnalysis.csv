@@ -1,0 +1,4 @@
+DATEEXP,OPERATOR,DEVICE,PRODCRIT,MOL,SAMPLEID,SAMPLEVOL,SAMPLEDILUTION,CALIBPRECGAMMEBLANC,PRIMARYKEY
+#date,#string,#string,#string,#string,#string,#float,#float,#string,#string
+30031993,myBiologist45,Linux,redCrit,mol1,mySampleID1010,0.70,0.23,blancBlanc,KEY1
+5091995,myBiologist42,Windows,yellowCrit,mol2,mySampleID404,5.02,0.22,blancNoir,KEY2

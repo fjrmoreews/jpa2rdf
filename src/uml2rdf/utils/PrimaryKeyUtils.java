@@ -16,4 +16,16 @@ public class PrimaryKeyUtils {
 		}
 		return primaryKey;
 	}
+
+	public static Object definePrimaryKey(Object operator, Object date, Object sampleID) throws Exception {
+		// TODO Auto-generated method stub
+		primaryKey=operator +"-"+ date +"-"+ sampleID;
+		System.out.println(primaryKey);
+		if(operator==null || date==null || sampleID==null) {
+
+		 //FIXME throw exception ??	
+			throw new Exception("need keep fragments");
+		}
+		return primaryKey;
+	}
 }
