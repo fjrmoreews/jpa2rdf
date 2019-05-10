@@ -1,3 +1,0 @@
-dateexp,operator,device,prodcrit,mol,sampleid,samplevol,sampledilution,calibprecgammeblanc,primarykey
-Thu Oct 19 00:00:00 CEST 84124,myBiologist45,Linux,redCrit,mol1,mySampleID1010,0.7,0.23,blancBlanc,Thu Oct 19 00:00:00 CEST 84124-myBiologist45-mySampleID1010
-Fri May 28 00:00:00 CEST 15841,myBiologist42,Windows,yellowCrit,mol2,mySampleID404,5.02,0.22,blancNoir,Fri May 28 00:00:00 CEST 15841-myBiologist42-mySampleID404

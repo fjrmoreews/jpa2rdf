@@ -25,11 +25,11 @@ public class GenerateRDFFromJPA {
 		options.addOption(pack);
 		
 		Option exporttype = new Option("e","exportchoice",true,"export choise used for the exportation of data to RDF or CSV acomics compatible");
-		exporttype.setRequired(true);
+		exporttype.setRequired(false);
 		options.addOption(exporttype);
 		
 		Option format = new Option("f","exportformat",true,"format used for the export RDF : XML or turtle");
-		format.setRequired(true);
+		format.setRequired(false);
 		options.addOption(format);
 
 		// Parse the arguments
@@ -46,7 +46,6 @@ public class GenerateRDFFromJPA {
 			return;
 		}
 		
-
 		// Get arguments' options 
 		String inputFileName = cmd.getOptionValue("name");	
 		String inputFileType = cmd.getOptionValue("type");	
@@ -56,9 +55,12 @@ public class GenerateRDFFromJPA {
 		ReadWorkBook f = new ReadWorkBook(inputFileName,inputFileType,generatejar);
 		File file = new File(inputFileName);
 		
-
 		// Read the given input file or print an error
-		if ( !(inputFileName==null) && file.exists() && export !=null) {
+		if ( !(inputFileName==null) && file.exists()) {
+			if (export ==null) {
+				export = "";
+				exportformat="";
+			}
 			f.parseFile(export, exportformat);
 		}
 		else {

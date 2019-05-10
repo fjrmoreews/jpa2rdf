@@ -15,6 +15,7 @@ import java.net.URLClassLoader;
 import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -25,6 +26,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.io.FileWriter;
+import java.lang.annotation.Annotation;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -42,21 +45,22 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import thewebsemantic.Bean2RDF;
 import uml2rdf.utils.CSVCreatorUtils;
 import uml2rdf.utils.PrimaryKeyUtils;
+import uml2rdf.utils.Xref;
 
 import javax.validation.Validation;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.FileWriter;
 
 public class ReadWorkBook {
 
+	private static final String ANNOT_VALUE = "AVALUE";
+	private static final String ANNOT_NAME = "ANAME";
 	private static final String PK_FIELDNAME = "primarykey";
 	final OntModel om = ModelFactory.createOntologyModel();
 	final Bean2RDF owriter = new Bean2RDF(om);
@@ -282,10 +286,27 @@ public class ReadWorkBook {
 					List<String> values = new ArrayList<>();
 					String head ;
 
+					Map<String, Map<String, String >> annotation = AnnotationImpl(ba);
+
 					if (Header == false) {
 						for(int i =0; i<columnIndex ; i++) {
-							//TODO : adapt header 
+							//TODO : adapt header ==> sampliID, class projet
+							//TODO : 2 cas de figure pour les association / association dans le modèle UML ou association avec des base externe (gène, prot)
+							//TODO : possibilité d'implémentation 1 - introspection détection issue des contraintes UML mot clé spé concernant lien extern (XREF) création de class d'annotation XREF / 2 - pour les association intra UML se référer au jeu d'annotation JPA 
 							head = colIdx2FieldN.get(i);
+							System.out.println(annotation.containsKey(head));
+							if (annotation!=null && annotation.containsKey(head)) {
+
+								Map<String, String > objAnnot = annotation.get(head);
+
+								String annotValue=objAnnot.get(ANNOT_VALUE);
+								//askomics specific annotation
+								/*
+								 * TODO 3 lines +url on askomics doc
+								 */
+								head = annotValue+"@"+head;
+							}
+
 							values.add(head);
 						}
 						Header = true;
@@ -613,5 +634,51 @@ public class ReadWorkBook {
 
 			m.write(System.out,rdfFormat,rdfstyle);
 		}
+	}
+
+	public static Map<String, Map<String, String >> AnnotationImpl(Object ba) throws IllegalArgumentException, IllegalAccessException {
+		Class<Xref> annot = Xref.class;
+
+		Map<String, Map<String, String >> m =  extractXrefInfo(ba,annot);    
+
+		System.out.println(m);
+		return m;
+	}
+
+	private static  Map<String, Map<String, String >> extractXrefInfo(Object ba, Class<Xref> annot) throws IllegalAccessException {
+		Class<?> clazz = ba.getClass();
+
+		List<Field> fields = new ArrayList<>();
+		while (clazz != Object.class) {
+			fields.addAll(Arrays.asList(clazz.getDeclaredFields()));
+			clazz = clazz.getSuperclass();
+		}
+
+		Map<String, Map<String, String >> m = new HashMap<>();
+		for (Field field : fields) {
+			System.out.println("->"+field);
+			field.setAccessible(true);
+			Annotation[] anl = field.getAnnotations();
+			if(anl!=null){
+				for(Annotation a : anl){
+					System.out.println("0"+a);
+				}
+			}
+			if (field.isAnnotationPresent(annot)) {
+				System.out.println("1");
+				//m.put(annot.getSimpleName(),getKey(field,annot));
+				Map<String, String > objAnnot = new HashMap<String, String >();
+				objAnnot.put(ANNOT_NAME,annot.getSimpleName());
+				objAnnot.put(ANNOT_VALUE, getKey(field,annot));
+				m.put(field.getName(), objAnnot);
+			}
+		}
+		return m;
+	}
+
+	private static String getKey(Field field, Class c) {
+		Xref anno = (Xref) field.getAnnotation(c);
+		String value = anno.arg1();
+		return value.isEmpty() ? field.getName() : value;
 	}
 }	

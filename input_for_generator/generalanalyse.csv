@@ -1,0 +1,3 @@
+dateexp,operator,device,prodcrit,sampleid,geneid,primarykey
+30031993,myBiologist45,Linux,redCrit,mySampleID1010,gene04,KEY1
+5091995,myBiologist42,Windows,yellowCrit,mySampleID404,gene56,KEY2
