@@ -1,3 +1,5 @@
-sampleid,name,age,animal
+name,sampleid,age,animal
 mySampleID1010,meuh,21,vache
 mySampleID404,crouic,22,cochon
+mySampleID666,marguerite,18,vache
+mySampleID111,rudy,19,cochon

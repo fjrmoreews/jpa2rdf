@@ -1,3 +1,5 @@
-geneid,end,start,name,lenght
+name,end,start,geneid,lenght
 gene04,800,500,nanism,300
 gene56,900,700,gigantism,200
+gene11,1400,1000,fluorescence,400
+gene66,1050,800,LAc12,250

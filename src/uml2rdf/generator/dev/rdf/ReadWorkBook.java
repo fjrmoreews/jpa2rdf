@@ -159,7 +159,7 @@ public class ReadWorkBook {
 		boolean goon=true;
 		String stopCause="";
 		String  exportFormat = ""; //csv_askomics, rdf_xml ...
-		String outputFilePath="test/zz";
+		String outputFilePath="input_for_generator/sampleinfo";
 
 		if (exportformat.equals("turtle")) {
 			exportFormat ="TURTLE";
@@ -260,7 +260,7 @@ public class ReadWorkBook {
 				logger.debug( String.format("Cell value indexation row %s , col %s"  ,(rowIndex+1), (columnIndex+1)  ));
 				columnIndex++;
 			}
-			if(isCommentRow==false && isHeaderRow==false && this.overwritePK==true) {
+			if(isCommentRow==false && isHeaderRow==false && this.overwritePK==true && colIdx2FieldN.containsValue(PK_FIELDNAME)) {
 
 				populateFieldPK(ba);	
 			}
@@ -301,8 +301,9 @@ public class ReadWorkBook {
 
 								String annotValue=objAnnot.get(ANNOT_VALUE);
 								//askomics specific annotation
-								/*
-								 * TODO 3 lines +url on askomics doc
+								/* in askomics, a relation between two entity is represented by
+								 *  a specific syntax in the header <name_of_relation<@name_of_header
+								 *  this relation name point a the first column of an other entity
 								 */
 								head = annotValue+"@"+head;
 							}
