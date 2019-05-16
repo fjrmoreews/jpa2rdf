@@ -24,6 +24,10 @@ public class GenerateRDFFromJPA {
 		pack.setRequired(true);
 		options.addOption(pack);
 		
+		Option outpath = new Option("d","outputdir",true,"path of the ouput");
+		outpath.setRequired(false);
+		options.addOption(outpath);
+		
 		Option exporttype = new Option("e","exportchoice",true,"export choise used for the exportation of data to RDF or CSV acomics compatible");
 		exporttype.setRequired(false);
 		options.addOption(exporttype);
@@ -50,6 +54,7 @@ public class GenerateRDFFromJPA {
 		String inputFileName = cmd.getOptionValue("name");	
 		String inputFileType = cmd.getOptionValue("type");	
 		String generatejar = cmd.getOptionValue("generatejar");
+		String outputpath = cmd.getOptionValue("outputdir");
 		String export = cmd.getOptionValue("exportchoice");
 		String exportformat = cmd.getOptionValue("exportformat");
 		ReadWorkBook f = new ReadWorkBook(inputFileName,inputFileType,generatejar);
@@ -61,7 +66,7 @@ public class GenerateRDFFromJPA {
 				export = "";
 				exportformat="";
 			}
-			f.parseFile(export, exportformat);
+			f.parseFile(export, exportformat,outputpath);
 		}
 		else {
 			System.err.println("file not found or export choice not valide"+file.getAbsolutePath());

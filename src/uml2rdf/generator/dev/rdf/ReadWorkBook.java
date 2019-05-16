@@ -119,7 +119,7 @@ public class ReadWorkBook {
 	}
 
 	//*********** How to read An Excel File ***********
-	public void parseFile(String export, String exportformat) {
+	public void parseFile(String export, String exportformat, String ouputpath) {
 		logger.info("start:parseFile");
 		// To access an input file content
 		if (export.equals("RDF")) {
@@ -143,7 +143,7 @@ public class ReadWorkBook {
 			else if (this.fileType.toLowerCase().equals("csv")){
 				//TODO implement is  ??
 			}
-			parseSheet(sheet, exportformat);
+			parseSheet(sheet, exportformat, ouputpath);
 			file.close();
 		}
 		catch (Exception e) {
@@ -155,11 +155,11 @@ public class ReadWorkBook {
 	}
 
 	@SuppressWarnings("null")
-	private void parseSheet(Sheet sheet, String exportformat ) throws Exception {
+	private void parseSheet(Sheet sheet, String exportformat, String ouputpath ) throws Exception {
 		boolean goon=true;
 		String stopCause="";
 		String  exportFormat = ""; //csv_askomics, rdf_xml ...
-		String outputFilePath="input_for_generator/sampleinfo";
+		String outputFilePath= ouputpath;
 
 		if (exportformat.equals("turtle")) {
 			exportFormat ="TURTLE";
@@ -175,6 +175,7 @@ public class ReadWorkBook {
 		String sheetName = sheet.getSheetName();
 		String classN=extractClassNameFromLabel(sheetName);
 		Object ba = selectTargetClass(classN);
+		outputFilePath= outputFilePath+classN;
 
 
 
