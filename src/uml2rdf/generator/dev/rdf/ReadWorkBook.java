@@ -45,6 +45,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import thewebsemantic.Bean2RDF;
 import uml2rdf.utils.CSVCreatorUtils;
 import uml2rdf.utils.PrimaryKeyUtils;
+import uml2rdf.utils.StringFormat;
 import uml2rdf.utils.Xref;
 
 import javax.validation.Validation;
@@ -223,7 +224,7 @@ public class ReadWorkBook {
 					if(v!=null ){
 						vc=v.toString().trim();
 						if(!vc.equals("")){
-							fieldName=vc;
+							fieldName=StringFormat.firstToLowerCase(vc);
 
 							colIdx2FieldN.put(columnIndex, fieldName);
 

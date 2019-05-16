@@ -1,0 +1,5 @@
+dateexp,operator,SampleOf@sampleid,device,prodcrit,primarykey,GeneInfo@geneid
+Thu Oct 19 00:00:00 CEST 84124,myBiologist45,mySampleID1010,Linux,redCrit,Thu Oct 19 00:00:00 CEST 84124-myBiologist45-mySampleID1010,gene04
+Fri May 28 00:00:00 CEST 15841,myBiologist42,mySampleID404,Windows,yellowCrit,Fri May 28 00:00:00 CEST 15841-myBiologist42-mySampleID404,gene56
+Thu Oct 19 00:00:00 CEST 84124,myBiologist45,mySampleID111,Linux,greenCrit,Thu Oct 19 00:00:00 CEST 84124-myBiologist45-mySampleID111,gene11
+Fri May 28 00:00:00 CEST 15841,myBiologist42,mySampleiD666,Windows,OrangeCrit,Fri May 28 00:00:00 CEST 15841-myBiologist42-mySampleiD666,gene66
