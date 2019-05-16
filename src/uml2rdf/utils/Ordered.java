@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface Ordered {
-	 
-String order() default  "1";
- 
+
+	int index() default 0 ;
+
 }
